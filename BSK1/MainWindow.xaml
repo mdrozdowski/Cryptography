@@ -1,0 +1,202 @@
+﻿<Window x:Class="BSK1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BSK1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="600">
+    <TabControl TabStripPlacement="Top">
+        <TabItem Header="Zad 1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Podaj słowo" Margin="5"></Label>
+                <Label Content="Podaj N " Grid.Row="1" Margin="5"></Label>
+                <Button Name="zadanie1Szyfruj" Content="Szyfruj" Grid.Row="2" Margin="5" Click="szyfruj_Zadanie1_Click"></Button>
+                <Label Content="Zaszyfrowane słowo:" Grid.Row="3" Margin="5"></Label>
+                <TextBox Name="textSlowo" Grid.Row="0" Grid.Column="1" Margin="5"></TextBox>
+                <TextBox Name="textN" Grid.Row="1" Grid.Column="1" Margin="5"></TextBox>
+                <TextBox Name="textZaszyfrowaneSlowo" Grid.Row="3" Grid.Column="1" Margin="5"></TextBox>
+                <Label Content="Podaj słowo" Grid.Column="2" Margin="5"></Label>
+                <Label Content="Podaj N" Grid.Row="1" Margin="5" Grid.Column="2"></Label>
+                <Button Name="zadanie1Odszyfruj" Content="Odszyfruj" Grid.Row="2" Grid.Column="2" Margin="5" Click="odszyfruj_Zadanie1_Click"></Button>
+                <Label Content="Odszyfrowane słowo:" Grid.Row="3" Margin="5" Grid.Column="2"></Label>
+                <TextBox Name="textSlowo2" Grid.Row="0" Grid.Column="3" Margin="5"></TextBox>
+                <TextBox Name="textN2" Grid.Row="1" Grid.Column="3" Margin="5"></TextBox>
+                <TextBox Name="textOdszyfrowaneSlowo" Grid.Row="3" Grid.Column="3" Margin="5"></TextBox>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Zad 2a" >
+            <Grid>
+                <Label x:Name="label6" Content="Slowo:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Height="27" Width="85"/>
+                <Label x:Name="label6_Copy" Content="Szyfr:" HorizontalAlignment="Left" Margin="5,81,0,0" VerticalAlignment="Top" Height="27" Width="80" RenderTransformOrigin="0.555,2.043"/>
+                <TextBox x:Name="textBox6" HorizontalAlignment="Left" Height="23" Margin="90,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBox6_Copy" HorizontalAlignment="Left" Height="23" Margin="90,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="button3" Content="Szyfruj" HorizontalAlignment="Left" Margin="90,50,0,0" VerticalAlignment="Top" Width="120" Click="button3_Click"/>
+                <Label x:Name="label6_Copy1" Content="Szyfr:" HorizontalAlignment="Left" Margin="255,10,0,0" VerticalAlignment="Top" Height="27" Width="85"/>
+                <Label x:Name="label6_Copy2" Content="Slowo:" HorizontalAlignment="Left" Margin="255,81,0,0" VerticalAlignment="Top" Height="27" Width="80" RenderTransformOrigin="0.555,2.043"/>
+                <TextBox x:Name="textBox6_Copy1" HorizontalAlignment="Left" Height="23" Margin="358,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBox6_Copy2" HorizontalAlignment="Left" Height="23" Margin="358,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="button3_Copy" Content="Odszyfruj" HorizontalAlignment="Left" Margin="358,50,0,0" VerticalAlignment="Top" Width="120" Click="button3_Copy_Click"/>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="Zad 2b">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Podaj haslo:" Margin="5"></Label>
+                <Label Content="podaj klucz:" Margin="5" Grid.Row="1"></Label>
+                <Button Content="Szyfruj" Margin="5" Grid.Row="2" Name="szyfrowanie2b" Click="szyfrowanie2b_Click"></Button>
+                <Label Content="Haslo zakodowane:" Margin="5" Grid.Row="3"></Label>
+                <TextBox Name="text2bhaslo" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
+                <TextBox Name="text2bklucz" Margin="5" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBox Name="text2bzaszyfrowane" Margin="5" Grid.Row="3" Grid.Column="1"></TextBox>
+                <Label Content="Podaj haslo zaszyf." Grid.Column="2" Margin="5"></Label>
+                <Label Content="Haslo Odkodowane" Grid.Column="2" Grid.Row="4" Margin="5"></Label>
+                <TextBox Name="text2bhaslodoodszyfrowania" Margin="5" Grid.Row="0" Grid.Column="3"></TextBox>
+                <Button Content="Odszyfruj" Margin="5" Grid.Row="2" Grid.Column="3" Name="Odszyfrowanie2b" Click="Odszyfrowanie2b_Click"></Button>
+                <TextBox Name="text2bpoodszyfrowaniu" Margin="5" Grid.Row="3" Grid.Column="3"></TextBox>
+            </Grid>
+        </TabItem>
+        
+        <TabItem Header="Zad 4">
+            <Grid>
+                <Label x:Name="label" Content="Podaj slowo" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Height="24" Width="79"/>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="111,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label x:Name="label1" Content="Podaj K0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="79"/>
+                <Label x:Name="label2" Content="Podaj K1" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="79"/>
+                <Label x:Name="label3" Content="Szyfr:" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" Width="79"/>
+                <TextBox x:Name="textk0" HorizontalAlignment="Left" Height="23" Margin="111,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.024,-0.35"/>
+                <TextBox x:Name="textk1" HorizontalAlignment="Left" Height="23" Margin="111,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="111,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="button" Content="Szyfruj" HorizontalAlignment="Left" Margin="111,109,0,0" VerticalAlignment="Top" Width="120" Click="button_Click"/>
+                <Button x:Name="button_Copy" Content="Odszyfruj" HorizontalAlignment="Left" Margin="365,109,0,0" VerticalAlignment="Top" Width="120" Click="button_Copy_Click"/>
+                <Label x:Name="label_Copy" Content="Podaj zaszyfrowane:" HorizontalAlignment="Left" Margin="265,72,0,0" VerticalAlignment="Top" Height="24" Width="100"/>
+                <Label x:Name="label3_Copy" Content="Odszyfrowane:" HorizontalAlignment="Left" Margin="265,145,0,0" VerticalAlignment="Top" Width="95"/>
+                <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="365,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBox4_Copy" HorizontalAlignment="Left" Height="23" Margin="365,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="Zad 5">
+            <Grid>
+                <Button x:Name="button1" Content="Szyfruj" HorizontalAlignment="Left" Margin="174,85,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+                <Button x:Name="button2" Content="Odszyfruj" HorizontalAlignment="Left" Margin="426,85,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
+                <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="129,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="129,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label x:Name="label4" Content="Slowo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="114"/>
+                <Label x:Name="label5" Content="Klucz" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="114"/>
+                <Label x:Name="label5_Copy" Content="Slowo zaszyfrowane" HorizontalAlignment="Left" Margin="267,45,0,0" VerticalAlignment="Top" Width="119"/>
+                <TextBox x:Name="textBox2_Copy" HorizontalAlignment="Left" Height="23" Margin="386,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                <Label x:Name="label4_Copy" Content="Zaszyfrowane:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="114"/>
+                <Label x:Name="label4_Copy1" Content="Odszyfrowane" HorizontalAlignment="Left" Margin="267,118,0,0" VerticalAlignment="Top" Width="114"/>
+                <TextBox x:Name="textBox5" HorizontalAlignment="Left" Height="23" Margin="124,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBox5_Copy" HorizontalAlignment="Left" Height="23" Margin="381,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+            </Grid>
+        </TabItem>
+        <TabItem Header="LSFR">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Podaj wielomian:"/>
+                <TextBox x:Name="lsfr_polynomial" Grid.Row="1" Margin="10"/>
+                <Label Content="Podaj seed:" Grid.Column="1"/>
+                <TextBox x:Name="lsfr_seed" Grid.Row="1" Grid.Column="1" Margin="10"/>
+                <Button x:Name="Generate" Content="Generuj" Grid.Row="1" Grid.Column="2" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="Generate_Click" Height="26" Grid.RowSpan="2"/>
+                <Label Content="Wygenerowana liczba:" Grid.Column="2"/>
+                <Label Content="Podaj liczbę powtórzeń:" Grid.Row="2"/>
+                <TextBox x:Name="repeats" Grid.Column="1" Grid.Row="2" Margin="0,2,120,86" />
+                <TextBox x:Name="result" Grid.Column="2" Grid.Row="1" Margin="5" IsReadOnly="True"/>
+                <TextBox x:Name="history" Grid.Column="3" Margin="15" Grid.RowSpan="4" IsReadOnly="True"/>
+
+
+
+            </Grid>
+
+
+
+        </TabItem>
+        <TabItem Header="SSC">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Podaj wielomian:"/>
+                <TextBox x:Name="lsfr_polynomial2" Grid.Row="1" Margin="10" Text="10011"/>
+                <Label Content="Podaj seed:" Grid.Column="1" />
+                <TextBox x:Name="lsfr_seed2" Grid.Row="1" Grid.Column="1" Margin="10" Text="1100"/>
+                <Button x:Name="Execute" Content="Koduj" Grid.Row="1" Grid.Column="2" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="Converting_Click" Height="26" Grid.RowSpan="2"/>
+                <Button x:Name="goBack" Content="Dekoduj" Grid.Row="1" Grid.Column="3" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="GoBack_Click" Height="26" Grid.RowSpan="2"/>
+                <TextBox x:Name="doneCoding"  Grid.Row="4" Grid.Column="2" Margin="30"/>
+                <TextBox x:Name="doneDecoding" Grid.Column="3" Grid.Row="4" Margin="30"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Jebanie">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+               
+                <Button x:Name="koduj" Content="Koduj" Grid.Row="1" Grid.Column="2" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="Koduj_Click" Height="26" Grid.RowSpan="2"/>
+                <Button x:Name="dekoduj" Content="Dekoduj" Grid.Row="1" Grid.Column="3" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="Dekoduj_Click" Height="26" Grid.RowSpan="2"/>
+                <TextBox x:Name="zakodowane"  Grid.Row="4" Grid.Column="2" Margin="30"/>
+                <TextBox x:Name="dekodowane" Grid.Column="3" Grid.Row="4" Margin="30"/>
+            </Grid>
+        </TabItem>
+        
+    </TabControl>
+</Window>

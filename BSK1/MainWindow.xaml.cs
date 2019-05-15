@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Numerics;
 using System.IO;
 using System.Collections;
+using Microsoft.Win32;
+using Path = System.IO.Path;
 
 namespace BSK1
 {
@@ -425,12 +427,7 @@ namespace BSK1
             textBox5_Copy.Text = szyfrowanko;
         }
         #endregion
-
-
-
-
-
-
+        #region checkindex
         private int Check_index(char znak)
         {
             char[] Alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
@@ -441,7 +438,7 @@ namespace BSK1
             }
             return 0;
         }
-
+        #endregion
         #region lsfr
         private void Generate_Click(object sender, RoutedEventArgs e)
         {
@@ -498,10 +495,14 @@ namespace BSK1
         }
         #endregion
 
+        #region SSC
         private void Converting_Click(object sender, RoutedEventArgs e)
         {
-            string inputFilename = @"C:\elo\test.bin";
-
+            string inputFilename = filepath.Text;
+            string fileDir = Path.GetDirectoryName(filepath.Text);
+            string fileNejm = fileName.Text;
+            string fileExt = fileExtention.Text;
+       
             byte[] fileBytes = File.ReadAllBytes(inputFilename);
             string strBin = string.Empty;
             byte btindx = 0;
@@ -536,7 +537,7 @@ namespace BSK1
 
 
 
-
+            
 
 
             int liczba_przesuniec = source.Length;
@@ -593,7 +594,11 @@ namespace BSK1
             }
 
             byte byteOutput = 0;
-            BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testoutput.bin", FileMode.Create));
+
+            string finalPath = fileDir + "\\" + fileNejm+"CodedSSC" + ".bin";
+            doneCoding.Text = finalPath;
+
+            BinaryWriter bw = new BinaryWriter(new FileStream(finalPath, FileMode.Create));
 
             for (int i = 0; i < wynik.Length; i += 8)
             {
@@ -610,7 +615,11 @@ namespace BSK1
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
-            string inputFilename = @"C:\elo\testoutput.bin";
+            string fileDir = Path.GetDirectoryName(filepath.Text);
+            string fileNejm = fileName.Text;
+            string fileExt = fileExtention.Text;
+            string inputFilename = fileDir+"\\"+fileNejm+"CodedSSC"+".bin";
+
             byte[] fileBytes = File.ReadAllBytes(inputFilename);
             string strBin = string.Empty;
             byte btindx = 0;
@@ -697,7 +706,9 @@ namespace BSK1
                 wynik[i] = (source[i] + wyjscie[i]) % 2;
             }
 
-            BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testDeconverted.bin", FileMode.Create));
+            string finalPath = fileDir + "\\" + fileNejm + "DecodedSSC" + fileExt;
+
+            BinaryWriter bw = new BinaryWriter(new FileStream(finalPath, FileMode.Create));
 
             byte byteOutput = 0;
 
@@ -712,10 +723,14 @@ namespace BSK1
             doneDecoding.Text = "Rozszyfrowano";
 
         }
-
+        #endregion
+        #region 3SC
         private void Execute3SC_Click(object sender, RoutedEventArgs e)
         {
-            string inputFilename = @"C:\elo\test.bin";
+            string inputFilename = filepath3SC.Text;
+            string fileDir = Path.GetDirectoryName(filepath3SC.Text);
+            string fileNejm = fileName3SC.Text;
+            string fileExt = fileExtention3SC.Text; 
 
             byte[] fileBytes = File.ReadAllBytes(inputFilename);
             string strBin = string.Empty;
@@ -757,8 +772,8 @@ namespace BSK1
             int liczba_przesuniec = source.Length;
             int[] wyjscie = new int[liczba_przesuniec];
             int suma = 0;
-            string seed_str = lsfr_seed2.Text;
-            string poly_str = lsfr_polynomial2.Text;
+            string seed_str = lsfr_seed3SC.Text;
+            string poly_str = lsfr_polynomial3SC.Text;
 
 
             int[] seed = new int[seed_str.Length];
@@ -805,7 +820,10 @@ namespace BSK1
             
 
             byte byteOutput = 0;
-            BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testoutput3SC.bin", FileMode.Create));
+            string finalPath = fileDir + "\\" + fileNejm + "Coded3SC" + ".bin";
+            
+
+            BinaryWriter bw = new BinaryWriter(new FileStream(finalPath, FileMode.Create));
 
             for (int i = 0; i < wyjscie.Length; i += 8)
             {
@@ -822,7 +840,10 @@ namespace BSK1
 
         private void GoBack3SC_Click(object sender, RoutedEventArgs e)
         {
-            string inputFilename = @"C:\elo\testoutput3SC.bin";
+            string inputFilename = filepath3SC.Text;
+            string fileDir = Path.GetDirectoryName(filepath3SC.Text);
+            string fileNejm = fileName3SC.Text;
+            string fileExt = fileExtention3SC.Text;
             byte[] fileBytes = File.ReadAllBytes(inputFilename);
             string strBin = string.Empty;
             byte btindx = 0;
@@ -859,8 +880,8 @@ namespace BSK1
             int liczba_przesuniec = source.Length;
             int[] wyjscie = new int[liczba_przesuniec];
             int suma = 0;
-            string seed_str = lsfr_seed2.Text;
-            string poly_str = lsfr_polynomial2.Text;
+            string seed_str = lsfr_seed3SC.Text;
+            string poly_str = lsfr_polynomial3SC.Text;
 
 
             int[] seed = new int[seed_str.Length];
@@ -877,8 +898,6 @@ namespace BSK1
 
             int[] new_seed = new int[seed.Length];
 
-
-
             for (int i = 0; i < liczba_przesuniec; i++)
             {
                 for (int j = 0; j < seed.Length; j++)
@@ -887,9 +906,7 @@ namespace BSK1
                     {
                         suma = suma + seed[j];
                     }
-
                 }
-
                 for (int j = 0; j < (seed.Length - 1); j++)
                 {
                     new_seed[j + 1] = seed[j];
@@ -903,13 +920,10 @@ namespace BSK1
                 suma = 0;
                 
             }
-            
-           
 
-            BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testDeconverted3SC.bin", FileMode.Create));
-
+            string finalPath = fileDir + "\\" + fileNejm + "Decoded3SC" + fileExt;          
+            BinaryWriter bw = new BinaryWriter(new FileStream(finalPath, FileMode.Create));
             byte byteOutput = 0;
-
 
             for (int i = 0; i < wyjscie.Length; i += 8)
             {
@@ -919,6 +933,47 @@ namespace BSK1
             }
             bw.Close();
             doneDecoding3SC.Text = "Rozszyfrowano";
+
+        }
+        #endregion
+        public void OpenFile(out string locationTextBox)
+        {
+            locationTextBox = "";
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Multiselect = false;
+            //fileDialog.Filter = "All Files*.*";
+            fileDialog.DefaultExt = ".txt";
+            Nullable<bool> dialogOk = fileDialog.ShowDialog();
+
+            if (dialogOk == true)
+            {
+                string sFilenames = "";
+
+                foreach (string sFilename in fileDialog.FileNames)
+                {
+                    sFilenames += ";" + sFilename;
+                }
+                sFilenames = sFilenames.Substring(1);
+
+                locationTextBox = sFilenames;
+            }
+        }
+
+        private void ChooseFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFile(out string fLocation);
+            filepath.Text = fLocation;
+            fileExtention.Text = Path.GetExtension(fLocation);
+            fileName.Text = Path.GetFileNameWithoutExtension(fLocation);
+           
+
+        }
+        private void ChooseFile3SC_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFile(out string fLocation);
+            filepath3SC.Text = fLocation;
+            fileExtention3SC.Text = Path.GetExtension(fLocation);
+            fileName3SC.Text = Path.GetFileNameWithoutExtension(fLocation);
 
         }
     }

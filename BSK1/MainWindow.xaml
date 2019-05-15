@@ -80,7 +80,7 @@
                 <TextBox Name="text2bpoodszyfrowaniu" Margin="5" Grid.Row="3" Grid.Column="3"></TextBox>
             </Grid>
         </TabItem>
-        
+
         <TabItem Header="Zad 4">
             <Grid>
                 <Label x:Name="label" Content="Podaj slowo" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Height="24" Width="79"/>
@@ -142,9 +142,6 @@
                 <TextBox x:Name="repeats" Grid.Column="1" Grid.Row="2" Margin="0,2,120,86" />
                 <TextBox x:Name="result" Grid.Column="2" Grid.Row="1" Margin="5" IsReadOnly="True"/>
                 <TextBox x:Name="history" Grid.Column="3" Margin="15" Grid.RowSpan="4" IsReadOnly="True"/>
-
-
-
             </Grid>
 
 
@@ -164,7 +161,6 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-
                 <Label Content="Podaj wielomian:"/>
                 <TextBox x:Name="lsfr_polynomial2" Grid.Row="1" Margin="10" Text="10011"/>
                 <Label Content="Podaj seed:" Grid.Column="1" />
@@ -173,6 +169,11 @@
                 <Button x:Name="goBack" Content="Dekoduj" Grid.Row="1" Grid.Column="3" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="GoBack_Click" Height="26" Grid.RowSpan="2"/>
                 <TextBox x:Name="doneCoding"  Grid.Row="4" Grid.Column="2" Margin="30"/>
                 <TextBox x:Name="doneDecoding" Grid.Column="3" Grid.Row="4" Margin="30"/>
+                <Button x:Name="chooseFile" Content="Plik..." Grid.Row="1" Grid.Column="0" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="ChooseFile_Click" Height="26" Grid.RowSpan="2"/>
+                <TextBox x:Name="filepath" Grid.Row="1" Grid.Column="1" Margin="9.8,39.6,10.4,84.8" Grid.RowSpan="2"/>
+                <TextBox x:Name="fileName" Grid.Row="2" Grid.Column="1" Margin="28.6,30.6,28.6,53.8" RenderTransformOrigin="0.558,-0.131" TextAlignment="Center"/>
+                <TextBox x:Name="fileExtention" Grid.Row="2" Grid.Column="1" Margin="54.1,61.6,54.1,22.8" RenderTransformOrigin="1.462,0.646" TextAlignment="Center"/>
+                
             </Grid>
         </TabItem>
         <TabItem Header="3SC">
@@ -198,8 +199,12 @@
                 <Button x:Name="goBack3SC" Content="Dekoduj" Grid.Row="1" Grid.Column="3" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="GoBack3SC_Click" Height="26" Grid.RowSpan="2"/>
                 <TextBox x:Name="doneCoding3SC"  Grid.Row="4" Grid.Column="2" Margin="30"/>
                 <TextBox x:Name="doneDecoding3SC" Grid.Column="3" Grid.Row="4" Margin="30"/>
+                <Button x:Name="chooseFile3SC" Content="Plik..." Grid.Row="1" Grid.Column="0" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="ChooseFile3SC_Click" Height="26" Grid.RowSpan="2"/>
+                <TextBox x:Name="filepath3SC" Grid.Row="1" Grid.Column="1" Margin="9.8,39.6,10.4,84.8" Grid.RowSpan="2"/>
+                <TextBox x:Name="fileName3SC" Grid.Row="2" Grid.Column="1" Margin="28.6,30.6,28.6,53.8" RenderTransformOrigin="0.558,-0.131" TextAlignment="Center"/>
+                <TextBox x:Name="fileExtention3SC" Grid.Row="2" Grid.Column="1" Margin="54.1,61.6,54.1,22.8" RenderTransformOrigin="1.462,0.646" TextAlignment="Center"/>
             </Grid>
         </TabItem>
-        
+
     </TabControl>
 </Window>

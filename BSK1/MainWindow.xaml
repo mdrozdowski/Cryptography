@@ -175,7 +175,7 @@
                 <TextBox x:Name="doneDecoding" Grid.Column="3" Grid.Row="4" Margin="30"/>
             </Grid>
         </TabItem>
-        <TabItem Header="Jebanie">
+        <TabItem Header="3SC">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -190,11 +190,14 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-               
-                <Button x:Name="koduj" Content="Koduj" Grid.Row="1" Grid.Column="2" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="Koduj_Click" Height="26" Grid.RowSpan="2"/>
-                <Button x:Name="dekoduj" Content="Dekoduj" Grid.Row="1" Grid.Column="3" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="Dekoduj_Click" Height="26" Grid.RowSpan="2"/>
-                <TextBox x:Name="zakodowane"  Grid.Row="4" Grid.Column="2" Margin="30"/>
-                <TextBox x:Name="dekodowane" Grid.Column="3" Grid.Row="4" Margin="30"/>
+                <Label Content="Podaj wielomian:"/>
+                <TextBox x:Name="lsfr_polynomial3SC" Grid.Row="1" Margin="10" Text="10011"/>
+                <Label Content="Podaj seed:" Grid.Column="1" />
+                <TextBox x:Name="lsfr_seed3SC" Grid.Row="1" Grid.Column="1" Margin="10" Text="1100"/>
+                <Button x:Name="Execute3SC" Content="Koduj" Grid.Row="1" Grid.Column="2" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="Execute3SC_Click" Height="26" Grid.RowSpan="2"/>
+                <Button x:Name="goBack3SC" Content="Dekoduj" Grid.Row="1" Grid.Column="3" Margin="19.6,39.6,19.6,0" VerticalAlignment="Top" Click="GoBack3SC_Click" Height="26" Grid.RowSpan="2"/>
+                <TextBox x:Name="doneCoding3SC"  Grid.Row="4" Grid.Column="2" Margin="30"/>
+                <TextBox x:Name="doneDecoding3SC" Grid.Column="3" Grid.Row="4" Margin="30"/>
             </Grid>
         </TabItem>
         

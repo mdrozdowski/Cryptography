@@ -502,22 +502,6 @@ namespace BSK1
         {
             string inputFilename = @"C:\elo\test.bin";
 
-
-            //////BitArray bits = new BitArray(fileBytes);
-            ////int[] source = new int[fileBytes.Length];
-            ////fileBytes.CopyTo(source, 0);
-
-            //////   string[] bitString = fileBytes.Select(x => Convert.ToString(x, 2)).ToArray();
-            //////int[] source = new int[bitString.Length];
-
-            //////for (int i = 0; i < bitString.Length; i++)
-            //////{
-            //////    source[i] = int.Parse(bitString[i]);
-            //////}
-            //////gotowa tablica intow
-            ///
-
-            
             byte[] fileBytes = File.ReadAllBytes(inputFilename);
             string strBin = string.Empty;
             byte btindx = 0;
@@ -528,31 +512,27 @@ namespace BSK1
                 btindx = fileBytes[i];
 
                 strBin = Convert.ToString(btindx, 2); // Convert from Byte to Bin
-               strBin = strBin.PadLeft(8, '0');  // Zero Pad
-                
+                strBin = strBin.PadLeft(8, '0');  // Zero Pad
+
                 sb.Append(strBin);
             }
             strAllbin = sb.ToString();
-            //char[] charBit = strAllbin.ToCharArray();
-
-
-
 
             int[] source = new int[strAllbin.Length];
 
             int k = 0;
 
-            foreach(char c in strAllbin)
+            foreach (char c in strAllbin)
             {
                 source[k++] = Convert.ToInt32(c);
             }
 
-            for(int i= 0; i<source.Length;i++)
+            for (int i = 0; i < source.Length; i++)
             {
                 source[i] = source[i] - 48;
             }
 
-
+            //GOTOWA TABLICA INTOW 
 
 
 
@@ -612,42 +592,18 @@ namespace BSK1
                 wynik[i] = (source[i] + wyjscie[i]) % 2;
             }
 
-
-
-            //List<byte> bytes = new List<byte>(wynik.GetUpperBound(0) * sizeof(byte));
-            byte chuj = 0;
+            byte byteOutput = 0;
             BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testoutput.bin", FileMode.Create));
 
-            for (int i=0; i<wynik.Length; i+=8)
+            for (int i = 0; i < wynik.Length; i += 8)
             {
-                chuj = Convert.ToByte(128*wynik[i]+64*wynik[i+1]+32*wynik[i+2]+16*wynik[i+3]+8*wynik[i+4]+4* wynik[i + 5] +2* wynik[i + 6] +wynik[i + 7]); 
-                bw.Write(chuj);
-                chuj = 0;
-            
+                byteOutput = Convert.ToByte(128 * wynik[i] + 64 * wynik[i + 1] + 32 * wynik[i + 2] + 16 * wynik[i + 3] + 8 * wynik[i + 4] + 4 * wynik[i + 5] + 2 * wynik[i + 6] + wynik[i + 7]);
+                bw.Write(byteOutput);
+                byteOutput = 0;
+
 
             }
-
-            //return bytes.ToArray();
-
-
-
-
-
-            
-
-          
-
-            //for( int i =0; i<wynik.Length;i++)
-            //{
-            //    bw.Write(bytes[i]);
-            //}
             bw.Close();
-
-
-
-
-
-            //File.WriteAllText(@"C:\elo\testoutput.bin", string.Join("", wynik));
             doneCoding.Text = "Zakodowano";
         }
 
@@ -665,15 +621,11 @@ namespace BSK1
                 btindx = fileBytes[i];
 
                 strBin = Convert.ToString(btindx, 2); // Convert from Byte to Bin
-                                                      strBin = strBin.PadLeft(8, '0');  // Zero Pad
+                strBin = strBin.PadLeft(8, '0');  // Zero Pad
 
                 sb.Append(strBin);
             }
             strAllbin = sb.ToString();
-            //char[] charBit = strAllbin.ToCharArray();
-
-
-
 
             int[] source = new int[strAllbin.Length];
 
@@ -745,51 +697,228 @@ namespace BSK1
                 wynik[i] = (source[i] + wyjscie[i]) % 2;
             }
 
-
-            //using (var stream = new FileStream(@"C:\elo\test.bin", FileMode.Create, FileAccess.Write, FileShare.None))
-            //using (var writer = new BinaryWriter(stream))
-            //{
-            //    foreach (int item in wynik)
-            //    {
-            //        writer.Write(item);
-            //    }
-            //}
-
             BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testDeconverted.bin", FileMode.Create));
 
-            byte chuj = 0;
-            
+            byte byteOutput = 0;
+
 
             for (int i = 0; i < wynik.Length; i += 8)
             {
-                chuj = Convert.ToByte(128 * wynik[i] + 64 * wynik[i + 1] + 32 * wynik[i + 2] + 16 * wynik[i + 3] + 8 * wynik[i + 4] + 4 * wynik[i + 5] + 2 * wynik[i + 6] + wynik[i + 7]);
-                //bytes.Add(BitConverter.GetBytes(wynik[0])[7]);
-                bw.Write(chuj);
-                chuj = 0;
-
-
+                byteOutput = Convert.ToByte(128 * wynik[i] + 64 * wynik[i + 1] + 32 * wynik[i + 2] + 16 * wynik[i + 3] + 8 * wynik[i + 4] + 4 * wynik[i + 5] + 2 * wynik[i + 6] + wynik[i + 7]);
+                bw.Write(byteOutput);
+                byteOutput = 0;
             }
             bw.Close();
-
-
-
-
-            //File.WriteAllText(@"C:\elo\testDeconverted.bin", string.Join("", wynik));
             doneDecoding.Text = "Rozszyfrowano";
 
         }
 
-        private void Koduj_Click(object sender, RoutedEventArgs e)
+        private void Execute3SC_Click(object sender, RoutedEventArgs e)
         {
             string inputFilename = @"C:\elo\test.bin";
-            byte[] byteArray;
-            byteArray = File.ReadAllBytes(inputFilename);
 
+            byte[] fileBytes = File.ReadAllBytes(inputFilename);
+            string strBin = string.Empty;
+            byte btindx = 0;
+            string strAllbin = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < fileBytes.Length; i++)
+            {
+                btindx = fileBytes[i];
+
+                strBin = Convert.ToString(btindx, 2); // Convert from Byte to Bin
+                strBin = strBin.PadLeft(8, '0');  // Zero Pad
+
+                sb.Append(strBin);
+            }
+            strAllbin = sb.ToString();
+
+            int[] source = new int[strAllbin.Length];
+
+            int k = 0;
+
+            foreach (char c in strAllbin)
+            {
+                source[k++] = Convert.ToInt32(c);
+            }
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                source[i] = source[i] - 48;
+            }
+
+            //GOTOWA TABLICA INTOW 
+
+
+
+
+
+
+            int liczba_przesuniec = source.Length;
+            int[] wyjscie = new int[liczba_przesuniec];
+            int suma = 0;
+            string seed_str = lsfr_seed2.Text;
+            string poly_str = lsfr_polynomial2.Text;
+
+
+            int[] seed = new int[seed_str.Length];
+            int[] polynomial = new int[poly_str.Length];
+
+            for (int i = 0; i < seed_str.Length; i++)
+            {
+                seed[i] = seed_str[i] - '0';
+            }
+            for (int i = 0; i < poly_str.Length; i++)
+            {
+                polynomial[i] = poly_str[i] - '0';
+            }
+
+            int[] new_seed = new int[seed.Length];
+
+
+
+            for (int i = 0; i < liczba_przesuniec; i++)
+            {
+                for (int j = 0; j < seed.Length; j++)
+                {
+                    if (polynomial[j] == 1)
+                    {
+                        suma = suma + seed[j];
+                    }
+
+                }
+
+                for (int j = 0; j < (seed.Length - 1); j++)
+                {
+                    new_seed[j + 1] = seed[j];
+                }
+                new_seed[0] = (suma+source[i]) % 2;
+                for (int j = 0; j < new_seed.Length; j++)
+                {
+                    seed[j] = new_seed[j];
+                }
+
+                suma = 0;
+                wyjscie[i] = seed[0];
+            }
+            
+            
+
+            byte byteOutput = 0;
+            BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testoutput3SC.bin", FileMode.Create));
+
+            for (int i = 0; i < wyjscie.Length; i += 8)
+            {
+                byteOutput = Convert.ToByte(128 * wyjscie[i] + 64 * wyjscie[i + 1] + 32 * wyjscie[i + 2] + 16 * wyjscie[i + 3] + 8 * wyjscie[i + 4] + 4 * wyjscie[i + 5] + 2 * wyjscie[i + 6] + wyjscie[i + 7]);
+                bw.Write(byteOutput);
+                byteOutput = 0;
+
+
+            }
+            bw.Close();
+            doneCoding3SC.Text = "Zakodowano";
 
         }
 
-        private void Dekoduj_Click(object sender, RoutedEventArgs e)
+        private void GoBack3SC_Click(object sender, RoutedEventArgs e)
         {
+            string inputFilename = @"C:\elo\testoutput3SC.bin";
+            byte[] fileBytes = File.ReadAllBytes(inputFilename);
+            string strBin = string.Empty;
+            byte btindx = 0;
+            string strAllbin = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < fileBytes.Length; i++)
+            {
+                btindx = fileBytes[i];
+
+                strBin = Convert.ToString(btindx, 2); // Convert from Byte to Bin
+                strBin = strBin.PadLeft(8, '0');  // Zero Pad
+
+                sb.Append(strBin);
+            }
+            strAllbin = sb.ToString();
+
+            int[] source = new int[strAllbin.Length];
+
+            int k = 0;
+
+            foreach (char c in strAllbin)
+            {
+                source[k++] = Convert.ToInt32(c);
+            }
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                source[i] = source[i] - 48;
+            }
+
+            //gotowa tablica intow
+
+
+            int liczba_przesuniec = source.Length;
+            int[] wyjscie = new int[liczba_przesuniec];
+            int suma = 0;
+            string seed_str = lsfr_seed2.Text;
+            string poly_str = lsfr_polynomial2.Text;
+
+
+            int[] seed = new int[seed_str.Length];
+            int[] polynomial = new int[poly_str.Length];
+
+            for (int i = 0; i < seed_str.Length; i++)
+            {
+                seed[i] = seed_str[i] - '0';
+            }
+            for (int i = 0; i < poly_str.Length; i++)
+            {
+                polynomial[i] = poly_str[i] - '0';
+            }
+
+            int[] new_seed = new int[seed.Length];
+
+
+
+            for (int i = 0; i < liczba_przesuniec; i++)
+            {
+                for (int j = 0; j < seed.Length; j++)
+                {
+                    if (polynomial[j] == 1)
+                    {
+                        suma = suma + seed[j];
+                    }
+
+                }
+
+                for (int j = 0; j < (seed.Length - 1); j++)
+                {
+                    new_seed[j + 1] = seed[j];
+                }
+                new_seed[0] = source[i];
+                for (int j = 0; j < new_seed.Length; j++)
+                {
+                    seed[j] = new_seed[j];
+                }
+                wyjscie[i] = (suma +source[i])%2;
+                suma = 0;
+                
+            }
+            
+           
+
+            BinaryWriter bw = new BinaryWriter(new FileStream(@"C:\elo\testDeconverted3SC.bin", FileMode.Create));
+
+            byte byteOutput = 0;
+
+
+            for (int i = 0; i < wyjscie.Length; i += 8)
+            {
+                byteOutput = Convert.ToByte(128 * wyjscie[i] + 64 * wyjscie[i + 1] + 32 * wyjscie[i + 2] + 16 * wyjscie[i + 3] + 8 * wyjscie[i + 4] + 4 * wyjscie[i + 5] + 2 * wyjscie[i + 6] + wyjscie[i + 7]);
+                bw.Write(byteOutput);
+                byteOutput = 0;
+            }
+            bw.Close();
+            doneDecoding3SC.Text = "Rozszyfrowano";
 
         }
     }
